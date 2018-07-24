@@ -8,30 +8,33 @@ var infowindow;
 function initialize() {
 
   navigator.geolocation.getCurrentPosition(function(position) {
-    
-    var localAtual = { 
-      lat: position.coords.latitude, lng: position.coords.longitude 
+    var localAtual = {
+      lat: position.coords.latitude, lng: position.coords.longitude
     };
 
     map = new google.maps.Map(document.getElementById('map'), {
       center: localAtual,
       zoom: 15
     });
-  
-  
+
+
     infowindow = new google.maps.InfoWindow();
     var request = {
       location: localAtual,
       radius: '500',
-      query: 'pizzaria'
+      query: 'pizzaria',
+      // key: AIzaSyCXNwUDnv1rcZ1OL8InO-Oj6jWJTP0uGOM,
+
+      key : AIzaSyDf76I70TGeWADf33Eq0FVpGv-t3WarZtU
+
     };
-  
+
     service = new google.maps.places.PlacesService(map);
     service.textSearch(request, callback);
 
     var marker=new google.maps.Marker({position:localAtual,map:map,title:"Você está Aqui!"});
-  
-  });  
+
+  });
 }
 
 function callback(results, status) {
@@ -60,7 +63,7 @@ function getLocation(){
       navigator.geolocation.getCurrentPosition(showPosition,showError);
       //return;
   }
-  x.innerHTML="Geolocalização não é suportada nesse browser."; 
+  x.innerHTML="Geolocalização não é suportada nesse browser.";
 }
 
 function showPosition(position) {
