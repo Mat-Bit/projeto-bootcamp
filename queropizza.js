@@ -23,9 +23,9 @@ function initialize() {
       location: localAtual,
       radius: '500',
       query: 'pizzaria',
-      // key: AIzaSyCXNwUDnv1rcZ1OL8InO-Oj6jWJTP0uGOM,
+      key: AIzaSyCXNwUDnv1rcZ1OL8InO-Oj6jWJTP0uGOM,
 
-      key : AIzaSyDf76I70TGeWADf33Eq0FVpGv-t3WarZtU
+      //key : AIzaSyDf76I70TGeWADf33Eq0FVpGv-t3WarZtU,
 
     };
 
