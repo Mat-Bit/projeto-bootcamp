@@ -1,2 +1,2 @@
 # projeto-bootcamp
-Criar um site que reune fotos agrupadas por uma tag ou local (cidade).
+Criar um site que personaliza e automatiza o pedido de pizza, dado a localização atual do usuário
