@@ -1,54 +1,58 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Quero Pizza</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="queropizza.css" />
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <script src="queropizza.js"></script>
-    <script src="DAO.js" charset="utf-8"></script>
-</head>
-<body>
-    <h1>Quero Pizza!</h1>
-    <fieldset>
-        <h3>Quantidade: </h3>
-        <input type="radio" name="qtd" value="1" /> 1
-        <input type="radio" name="qtd" value="2" /> 2
-        <input type="radio" name="qtd" value="3" /> 3
-        <input type="radio" name="qtd" value="Mais" /> Mais
-        <input name="qtdMais" id="qtdMais" type="text" />
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Quero Pizza</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="queropizza.css" />
+        <link href="https://fonts.googleapis.com/css?family=Bungee|Bungee+Inline|Concert+One|Coustard|Josefin+Slab|Lobster" rel="stylesheet">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <script src="jquery-3.3.1.js"></script>
+        <script src="DAO.js"></script>
+        <script src="queropizza.js"></script>
+    </head>
+    <body>
+        <img src=logo.png></img>
+        <fieldset style = "width: 50%; margin: 0px auto;">
+            <h1>Quantidade: </h1>
+            <input type="radio" name="qtd" class="qtdinput" value="1" /> <span class="text-cursive">1</span>
+            <input type="radio" name="qtd" class="qtdinput" value="2" /> <span class="text-cursive">2</span>
+            <input type="radio" name="qtd" class="qtdinput" value="3" /> <span class="text-cursive">3</span>
+            <input type="radio" name="qtd" class="qtdinput" value="Mais" /> <span class="text-cursive">Mais</span>
+            <input name="qtdMais" id="qtdMais" type="text"/>
+            <button type="button", style = style="width: 30%; text-align: center",  id="bt_qtd">OK</button>
+            <p></p>
+        </fieldset>
         <p></p>
-        <button onclick="setQtd()">Prox</button><p>
-    </fieldset>
-    <p></p>
-    <fieldset>
-        <h3>Modelos: (2 ou mais)</h3>
-        <input type="radio" name="mod" value="2" /> 50%
-        <input type="radio" name="mod" value="3" /> 25%
-        <input type="radio" name="mod" value="3.1" /> 50% | 25%
-        <input type="radio" name="mod" value="4" /> 33%
-
+        <fieldset id="modelos" style = "width: 50%; margin: 0px auto;">
+            <h1>Modelos:</h1>
+            <div id="PorcMod">
+                <span name="piz_mod_txt" class="text-cursive"></span>
+                <input type="radio" name="mod" value="2" /> <span class="text-cursive">50%</span>
+                <input type="radio" name="mod" value="3" /> <span class="text-cursive">25%</span>
+                <input type="radio" name="mod" value="3.1" /> <span class="text-cursive">50% | 25%</span>
+                <input type="radio" name="mod" value="4" /> <span class="text-cursive">33%</span>
+            </div>
+            <div id="listaPorcMod">
+            </div>
+            <p></p>
+        </fieldset>
         <p></p>
-    </fieldset>
-    <p></p>
-    <fieldset>
-        <h3>Pizza 1 </h3>
-        <h3>Escolha o sabor: </h3>
-        <select id="sabores">
-            <option value="Frango">Frango</option>
-            <option value="Queijo">Queijo</option>
-            <option value="Calabresa">Calabresa</option>
-            <option value="Portuguesa">Portuguesa</option>
-            <option value="Bacon">Bacon</option>
-        </select>
-        <button>+</button>
-    </fieldset>
-    <p></p>
-    <button onclick="initialize()">OK</button><p>
-    <div id="map" style="width:40%; height:40%"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXNwUDnv1rcZ1OL8InO-Oj6jWJTP0uGOM&libraries=places&callback=initialize"></script>
-</body>
+        <fieldset style="width: 50%; margin: 0px auto; text-align: center">
+            <h1>Escolha o sabor: </h1>
+            <select id="sabores">
+                <option value="Frango">Frango</option>
+                <option value="Queijo">Queijo</option>
+                <option value="Calabresa">Calabresa</option>
+                <option value="Portuguesa">Portuguesa</option>
+                <option value="Bacon">Bacon</option>
+            </select>
+            <button style = "text-align: center">+</button>
+        </fieldset>
+        <p></p>
+        <button onclick="inicialize()", style = style="width: 50%; text-align: center">OK</button><p>
+        <div id="map" style="width:40%; height:40%"></div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf76I70TGeWADf33Eq0FVpGv-t3WarZtU&libraries=places&callback=initMap"></script>
+    </body>
 </html>

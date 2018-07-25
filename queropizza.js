@@ -21,12 +21,8 @@ function initialize() {
     infowindow = new google.maps.InfoWindow();
     var request = {
       location: localAtual,
-      radius: '500',
-      query: 'pizzaria',
-      key: AIzaSyCXNwUDnv1rcZ1OL8InO-Oj6jWJTP0uGOM,
-
-      //key : AIzaSyDf76I70TGeWADf33Eq0FVpGv-t3WarZtU,
-
+      radius: '1500',
+      query: 'pizzaria'
     };
 
     service = new google.maps.places.PlacesService(map);
@@ -34,7 +30,7 @@ function initialize() {
 
     var marker=new google.maps.Marker({position:localAtual,map:map,title:"Você está Aqui!"});
 
-  });
+});
 }
 
 function callback(results, status) {
