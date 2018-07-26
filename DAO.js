@@ -15,7 +15,7 @@ function SetModelo(){
 
 $(document).ready(function(){
     // btn = radio input quantidade
-    var btn = $(".qtdinput");
+    var bt_qtd = $(".qtdinput");
     // qt_mais = input text quantidade (caso qtd > 3)
     var qt_mais = $("#qtdMais");
     qt_mais.hide();
@@ -28,10 +28,13 @@ $(document).ready(function(){
 
     var listaPorcMod = $("#listaPorcMod");
 
-    var bt_qtd_mais = $("#bt_qtd")
-    bt_qtd_mais.hide();
+    var bt_step_1_2 = $("#step_1_2")
+    bt_step_1_2.hide();
 
-    //var txt_porc = $("#piz_mod_txt");
+    var txt_porc = $("#piz_mod_txt");
+
+    var cad_cli = $("#cad_cli");
+    cad_cli.hide();
 
     function exibirPorc(n){
         //console.log(PorcMod);
@@ -42,9 +45,11 @@ $(document).ready(function(){
             // clone_txt.html("Pizza " + n);
             // clone_txt.show();
             // listaPorcMod.append(clone_txt);
+            txt_porc.html("Pizza" + n);
+            listaPorcMod.append(txt_porc);
             var clone_porc = PorcMod.clone();
             console.log(clone_porc);
-            console.log(clone_porc[name="piz_mod_txt"]);
+            //console.log(clone_porc[name="piz_mod_txt"]);
             //clone_porc[name="piz_mod_txt"].html("Pizza " + n)
             clone_porc.show();
             listaPorcMod.append(clone_porc);
@@ -53,28 +58,35 @@ $(document).ready(function(){
         listaPorcMod.show();
     }
 
-    btn.click(function(){
-        modPizza.show();
-        var valorclick = $(this).val();
-        //console.log(valorclick);
-        if (valorclick == 'Mais'){
+    bt_qtd.click(function(){
+        bt_step_1_2.show();
+        var aux = $(this).val();
+        console.log(aux);
+        if (aux == 'Mais'){
             qt_mais.show();
-            bt_qtd_mais.show();
-            //console.log(qt_mais);
-            //console.log(bt_qtd_mais);
-            bt_qtd_mais.click(function(){
-                var aux = $("#qtdMais").val();
-                valorclick = parseInt(aux);
-                //console.log(valorclick);
-                exibirPorc(valorclick);
-            })
         }
         else{
-            valorclick = parseInt(valorclick);
-            exibirPorc(valorclick);
+            qt_mais.hide();
         }
-        var pedido = new PedidoObj(valorclick);
+
+    })
+
+    bt_step_1_2.click(function(){
+        modPizza.show();
+        cad_cli.show();
+        var aux2 = $('input[name=qtd]:checked').val();
+        console.log(aux2);
+        if (aux2 == 'Mais'){
+            aux2 = $("#qtdMais").val();
+            console.log(aux2);
+        }
+        qtd_pizzas = parseInt(aux2);
+        console.log(qtd_pizzas);
+        exibirPorc(qtd_pizzas);
+        var pedido = new PedidoObj(qtd_pizzas);
         console.log(pedido);
     })
+
+
 
 })

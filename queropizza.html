@@ -12,7 +12,7 @@
         <script src="DAO.js"></script>
         <script src="queropizza.js"></script>
     </head>
-    <body>
+    <body onload="aparecerPopUp()">
         <img src=logo.png></img>
         <fieldset style = "width: 50%; margin: 0px auto;">
             <h1>Quantidade: </h1>
@@ -21,14 +21,14 @@
             <input type="radio" name="qtd" class="qtdinput" value="3" /> <span class="text-cursive">3</span>
             <input type="radio" name="qtd" class="qtdinput" value="Mais" /> <span class="text-cursive">Mais</span>
             <input name="qtdMais" id="qtdMais" type="text"/>
-            <button type="button", style = style="width: 30%; text-align: center",  id="bt_qtd">OK</button>
+            <button type="button", style = style="width: 30%; text-align: center",  id="step_1_2">OK</button>
             <p></p>
         </fieldset>
         <p></p>
         <fieldset id="modelos" style = "width: 50%; margin: 0px auto;">
             <h1>Modelos:</h1>
-            <div id="PorcMod">
-                <span name="piz_mod_txt" class="text-cursive"></span>
+            <div class="conteudoPorcMod" id="PorcMod">
+                <span ="piz_mod_txt" class="text-cursive"></span>
                 <input type="radio" name="mod" value="2" /> <span class="text-cursive">50%</span>
                 <input type="radio" name="mod" value="3" /> <span class="text-cursive">25%</span>
                 <input type="radio" name="mod" value="3.1" /> <span class="text-cursive">50% | 25%</span>
@@ -39,7 +39,7 @@
             <p></p>
         </fieldset>
         <p></p>
-        <fieldset style="width: 50%; margin: 0px auto; text-align: center">
+        <fieldset style= "width: 50%; margin: 0px auto; text-align: center">
             <h1>Escolha o sabor: </h1>
             <select id="sabores">
                 <option value="Frango">Frango</option>
@@ -51,8 +51,19 @@
             <button style = "text-align: center">+</button>
         </fieldset>
         <p></p>
-        <button onclick="inicialize()", style = style="width: 50%; text-align: center">OK</button><p>
+
+        <p></p>
+        <fieldset id="cad_cli" style= "width: 50%; margin: 0px auto; text-align: center">
+            <h1>Cadastro do cliente: </h1>
+            <span>Nome:</span>
+            <input id="nome_cli" type="text" name="nome_cli" value="" />
+            <span class="text-cursive">Numero de telefone (whats):</span>
+            <input id="tel_cli" type="text" name="tel_cli" value="" />
+        </fieldset>
+        <p></p>
+
+        <button onclick="initialize()", style = style="width: 50%; text-align: center">OK</button><p>
         <div id="map" style="width:40%; height:40%"></div>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf76I70TGeWADf33Eq0FVpGv-t3WarZtU&libraries=places&callback=initMap"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGKz3TSd4UTjlpk2k77_cD1q81Xusd2o&libraries=places&callback=initialize"></script>
     </body>
 </html>
