@@ -73,7 +73,7 @@ $(document).ready(function(){
             listaPorcMod.append(clone);
             var qtd_sabor = clone.find(".qntsabor");
             qtd_sabor.attr("name","mod_"+i);
-
+            qtdSabor = qtd_sabor;
             qtd_sabor.click(function(){
                 var sabores = [];
                 var valorclick2 = $(this).val();
@@ -156,7 +156,10 @@ $(document).ready(function(){
 
     confirmar.click(function(){
         var printapedido = $("#popupPedido");
-        printapedido.html("<p> <b> Pedido feito com sucesso!<br/>Numero de Pizzas: " + pedido.n_pizzas + "<br/>Nome do cliente: " + pedido.nome_cli + "<br/>Telefone contato: " + pedido.tel_cli + "<br/>Forma de pagamento: " + pedido.forma_pgto + "<br/>Nome da pizzaria: " + pedido.nomePizzaria + "<br/>Telefone pizzaria: " + pedido.tel_piz + " </b> </p>");
+        printapedido.html("<h3><p> <b> Pedido feito com sucesso!<br/>Numero de Pizzas: " + 
+        pedido.n_pizzas + "<br/>Nome do cliente: " + pedido.nome_cli + "<br/>Telefone contato: " + 
+        pedido.tel_cli + "<br/>Forma de pagamento: " + pedido.forma_pgto + "<br/>Nome da pizzaria: " + 
+        pedido.nomePizzaria + "<br/>Telefone pizzaria: " + pedido.tel_piz + " </b> </p></h3>");
     })
 
 })
@@ -281,7 +284,3 @@ function exibirTexto(){
     return stringMsg;
 }
 
-// function testeFinal(teste){
-//     console.log("Conseguiiiiiiii: " + teste);
-//     pizzaria.quantidade = teste;
-// }
