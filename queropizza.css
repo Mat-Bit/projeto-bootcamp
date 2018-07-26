@@ -1,3 +1,58 @@
 html { height: 100% }
 body { height: 100%; margin: 0; padding: 0 }
 #map_canvas { height: 100% }
+
+img{
+	width: 25%;
+	height: 45%;
+	margin: 0px 480px 0px 500px;
+}
+
+h1{
+    font-family: 'Bungee Inline', cursive;
+    font-size: 40pt;
+	color: rgb(226, 17, 17);
+    text-align: center;
+    font-size: 3em; color: #fffdd9;
+}
+
+.text-cursive {
+    font-family: 'Coustard', serif;
+    font-size: 30pt;
+    text-align: center;
+    color: rgb(226, 17, 17);
+}
+
+fieldset{
+    
+    background-color: rgb(250, 224, 110);
+    width:600px;
+    min-height:250px;
+    border: 5px solid rgb(226, 17, 17);
+}
+
+#sabores{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat #eeeeee;  /* Imagem de fundo (Seta) */
+    background-position: 218px center;
+    width: 250px;
+    height:30px;
+    border:1px solid rgb(226, 17, 17);
+    font-family: 'Coustard', serif;
+}
+button{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: center;
+    width: 60px;
+    height:30px;
+    border:1px solid rgb(226, 17, 17);
+    font-family: 'Coustard', serif; 
+    font-size: 15pt;
+
+}
+
+
