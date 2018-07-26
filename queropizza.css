@@ -16,6 +16,14 @@ h1{
     font-size: 3em; color: #fffdd9;
 }
 
+h2{
+    font-family: 'Bungee Inline', cursive;
+    font-size: 15pt;
+	color: rgb(226, 17, 17);
+    text-align: center;
+    font-size: 1em; color: #fffdd9;
+}
+
 .text-cursive {
     font-family: 'Coustard', serif;
     font-size: 30pt;
@@ -23,15 +31,22 @@ h1{
     color: rgb(226, 17, 17);
 }
 
+.text-cursive-cad {
+    font-family: 'Coustard', serif;
+    font-size: 18pt;
+    text-align: left;
+	/* width: 100px */
+    color: rgb(226, 17, 17);
+}
+
 fieldset{
-    
     background-color: rgb(250, 224, 110);
     width:600px;
     min-height:250px;
     border: 5px solid rgb(226, 17, 17);
 }
 
-#sabores{
+.sabores{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -41,18 +56,22 @@ fieldset{
     height:30px;
     border:1px solid rgb(226, 17, 17);
     font-family: 'Coustard', serif;
+    text-align: center;
 }
+
+#modelos{
+    text-align: center;
+}
+
 button{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     text-align: center;
-    width: 60px;
-    height:30px;
+	padding: 2px 5px;
+    /* width: 60px; */
+    /* height:30px; */
     border:1px solid rgb(226, 17, 17);
-    font-family: 'Coustard', serif; 
+    font-family: 'Coustard', serif;
     font-size: 15pt;
-
 }
-
-

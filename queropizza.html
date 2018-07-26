@@ -1,116 +1,102 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Quero Pizza</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="queropizza.css" />
+        <link href="https://fonts.googleapis.com/css?family=Bungee|Bungee+Inline|Concert+One|Coustard|Josefin+Slab|Lobster" rel="stylesheet">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <script src="jquery-3.3.1.js"></script>
+        <script src="funcoes.js" charset="utf-8"></script>
+        <!-- <script src="DAO.js"></script>
+        <script src="queropizza.js"></script> -->
+    </head>
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Quero Pizza</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="queropizza.css" />
-    <link href="https://fonts.googleapis.com/css?family=Bungee|Bungee+Inline|Concert+One|Coustard|Josefin+Slab|Lobster" rel="stylesheet">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <script src="queropizza.js"></script>
-    <script src="jquery-3.3.1.js"></script>
-    <script>
+    <body onload="popUpAviso()">
+        <img src=logo.jpeg></img>
+        <fieldset style = "width: 50%; margin: 0px auto;">
+            <h1>Quantidade: </h1>
+            <h2>Selecione quantas pizzas você deseja!</h2>
+            <input type="radio" name="qtd" class="qtdinput" value="1" /> <span class="text-cursive">1</span>
+            <input type="radio" name="qtd" class="qtdinput" value="2" /> <span class="text-cursive">2</span>
+            <input type="radio" name="qtd" class="qtdinput" value="3" /> <span class="text-cursive">3</span>
+            <input type="radio" name="qtd" class="qtdinput" value="Mais" /> <span class="text-cursive">Mais</span>
+            <input name="qtdMais" id="qtdMais" type="text" />
+            <p></p>
+            <button type="button", id="step_1_2">Próximo</button>
+            <p></p>
+        </fieldset>
 
-        var nomeCliente;
-        var qtdPizza;
-        //var pizza = [qtdPizza];
-        //var qtdSabores;
-        //var sabores = [qtdSabores];
-
-        $(document).ready(function(){
-
-            var btn = $(".qtdinput");
-            console.log(btn);
-            var modPizza = $("#modelos");
-            modPizza.hide();
-            var PorcMod = $("#PorcMod");
-            selectsab = $(".sabores");
-            selectsab.hide(); 
-            PorcMod.hide();
-            var listaPorcMod = $("#listaPorcMod");
-            var listasabores = $(".listasabores");
-
-            btn.click(function(){
-                modPizza.show();
-                var valorclick = $(this).val();
-
-                if(valorclick == 'Mais'){
-                    valorclick = $("#qtdMais").val();
-                }
-
-                valorclick = parseInt(valorclick);
-                qtdPizza = valorclick; /* AQUI */
-                testeFinal(qtdPizza);
-
-                listaPorcMod.empty();
-                for (var i= 0;i<valorclick;i++){
-                    var clone = PorcMod.clone();
-                    clone.show();
-                    listaPorcMod.append(clone);
-                    var inputs = clone.find(".qntsabor");
-                    inputs.attr("name","mod_"+i); 
-                    
-                    inputs.click(function(){
-                        var valorclick2 = $(this).val();
-                        valorclick2 = parseInt(valorclick2);
-                        var conteudoPorcMod = $(this).closest(".conteudoPorcMod");
-                        var listasabores = conteudoPorcMod.find(".listasabores");
-                        listasabores.empty();
-                        
-                        for (var j=0;j<valorclick2;j++){
-                            var clone2 = selectsab.clone();
-                            clone2.show();
-                            listasabores.append(clone2);
-                        }
-
-                    })
-                }
-
-            })
-
-        })
-    </script>
-</head>
-<body>
-    <img src=logo.png></img>
-    <fieldset style = "width: 50%; margin: 0px auto;">
-        <h1>Quantidade: </h1>
-        <input type="radio" name="qtd" class="qtdinput" value="1" /> <span class="text-cursive">1</span>
-        <input type="radio" name="qtd" class="qtdinput" value="2" /> <span class="text-cursive">2</span>
-        <input type="radio" name="qtd" class="qtdinput" value="3" /> <span class="text-cursive">3</span>
-        <input type="radio" name="qtd" class="qtdinput" value="Mais" /> <span class="text-cursive">Mais</span>
-        <input name="qtdMais" id="qtdMais" type="text" />
         <p></p>
-    </fieldset>
-    <p></p>
-    <fieldset id="modelos" style = "width: 50%; margin: 0px auto;">
-        <h1>Modelos:</h1>
-        <div class = "conteudoPorcMod" id = "PorcMod">
-            <input type="radio" name="mod" class="qntsabor" value="1" /> <span class="text-cursive">100%</span>
-            <input type="radio" name="mod" class="qntsabor" value="2" /> <span class="text-cursive">50%</span>
-            <input type="radio" name="mod" class="qntsabor" value="4" /> <span class="text-cursive">25%</span>
-            <select class = "sabores" >
-                    <option value="Selecione">Selecione o sabor</option>
+        <fieldset id="modelos" style = "width: 50%; margin: 0px auto;">
+            <h1>Modelos:</h1>
+            <h2>Selecione quantos sabores você deseja!</h2>
+            <div class = "conteudoPorcMod" id = "PorcMod">
+                <div></div>
+                <h2>Pizza:<h2>
+                <input type="radio" name="mod" class="qntsabor" value="1" /> <span class="text-cursive">1 Sabor</span>
+                <input type="radio" name="mod" class="qntsabor" value="2" /> <span class="text-cursive">2 Sabores</span>
+                <input type="radio" name="mod" class="qntsabor" value="4" /> <span class="text-cursive">4 Sabores</span>
+                <select class = "sabores" >
+                    <option value="Selecione" selected="selected">Selecione o sabor</option>
                     <option value="Frango">Frango</option>
-                    <option value="Queijo">Queijo</option>
+                    <option value="4_Queijos">4 Queijos</option>
                     <option value="Calabresa">Calabresa</option>
                     <option value="Portuguesa">Portuguesa</option>
                     <option value="Bacon">Bacon</option>
-            </select>
-            <div class = "listasabores" ></div>
-        </div>
-        <div id = "listaPorcMod" ></div>
-        <p></p>
-    </fieldset>
-    <button onclick="initialize()">OK</button><p>
-    <div id="map" style="width:40%; height:40%"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGKz3TSd4UTjlpk2k77_cD1q81Xusd2o&libraries=places&callback=initialize&fields=opening_hours"></script>
-    <p></p>
-    <button onclick="exibirTexto()">Texto</button><p>
-    <button onclick="showPosition()">TESTE</button>
-    <button href="#" onclick="window.open(exibirTexto())" target"_blank">CONFIRMAR</button></body>
+                </select>
 
-</body>
+                <div class = "listasabores" ></div>
+            </div>
+            <div id = "listaPorcMod" ></div>
+            <p></p>
+            <button type="button", id="step_2_3">Próximo</button>
+            <p></p>
+        </fieldset>
+
+        <p></p>
+        <fieldset id="cad_cli" style= "width: 50%; margin: 0px auto;">
+            <h1>Identificação do cliente: </h1>
+            <span class="text-cursive-cad" >Nome: </span>
+            <input id="nome_cli" type="text" name="nome_cli" value="" /> <br/>
+            <span class="text-cursive-cad" >Telefone (whats): </span>
+            <input id="tel_cli" type="text" name="tel_cli" value="" />
+            <p></p>
+            <button type="button", id="step_3_4">Próximo</button>
+            <p></p>
+        </fieldset>
+
+        <p></p>
+        <fieldset id="tela_pagam" style = "width: 50%; margin: 0px auto;">
+            <h1>Forma de pagamento: </h1>
+            <h2>Selecione a forma de pagamento!</h2>
+            <input type="radio" name="qtd" class="pagamento" value="1" /> <span class="text-cursive">Crédito</span>
+            <input type="radio" name="qtd" class="pagamento" value="2" /> <span class="text-cursive">Débito</span>
+            <input type="radio" name="qtd" class="pagamento" value="3" /> <span class="text-cursive">Dinheiro</span>
+            <p></p>
+            <button type="button", id="step_4_m">Feito!</button>
+            <p></p>
+        </fieldset>
+        <p></p>
+
+        <center><button id="gera_mapa", style = style="width: 50%; text-align: center">Escolher Local</button><p></center>
+
+        <div id="map" style="width:40%; height:40%"></div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGKz3TSd4UTjlpk2k77_cD1q81Xusd2o&libraries=places&callback=initializeMap"></script>
+        <p></p>
+        <p></p>
+        <span>_</span>
+        <p></p>
+        <!-- <button onclick="exibirTexto()">Texto</button>
+        <p></p>
+        <button onclick="showPosition()">TESTE</button>
+        <p></p> -->
+        <button id="confirmar" href="#" onclick="window.open(exibirTexto())" target"_blank">CONFIRMAR</button>
+        <p></p>
+        <span id="popupPedido"></span>
+        <p></p>
+
+    </body>
 </html>
