@@ -75,7 +75,7 @@ $(document).ready(function(){
             listaPorcMod.append(clone);
             var qtd_sabor = clone.find(".qntsabor");
             qtd_sabor.attr("name","mod_"+i);
-
+            qtdSabor = qtd_sabor;
             qtd_sabor.click(function(){
                 var valorclick2 = $(this).val();
                 valorclick2 = parseInt(valorclick2);
@@ -318,8 +318,3 @@ function exibirTexto(){
 
     return stringMsg;
 }
-
-// function testeFinal(teste){
-//     console.log("Conseguiiiiiiii: " + teste);
-//     pizzaria.quantidade = teste;
-// }
