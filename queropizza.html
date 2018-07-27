@@ -40,9 +40,9 @@
                 <input type="radio" name="mod" class="qntsabor" value="2" /> <span class="text-cursive">2 Sabores</span>
                 <input type="radio" name="mod" class="qntsabor" value="4" /> <span class="text-cursive">4 Sabores</span>
                 <select class = "sabores" >
-                    <option value="Selecione" selected="selected">Selecione o sabor</option>
+                    <option value="" selected="selected">Selecione o sabor</option>
                     <option value="Frango">Frango</option>
-                    <option value="4_Queijos">4 Queijos</option>
+                    <option value="4 Queijos">4 Queijos</option>
                     <option value="Calabresa">Calabresa</option>
                     <option value="Portuguesa">Portuguesa</option>
                     <option value="Bacon">Bacon</option>
@@ -81,19 +81,15 @@
         </fieldset>
         <p></p>
 
-        <center><button id="gera_mapa", style = style="width: 50%; text-align: center">Escolher Local</button><p></center>
+        <center><button id="gera_mapa", style= "width: 50%; text-align: center">Escolher Local</button><p></center>
 
-        <div id="map" style="width:40%; height:40%"></div>
+        <div id="map" style="width:40%; height:40%; margin:auto"></div>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGKz3TSd4UTjlpk2k77_cD1q81Xusd2o&libraries=places&callback=initializeMap"></script>
         <p></p>
         <p></p>
-        <span>_</span>
-        <p></p>
-        <!-- <button onclick="exibirTexto()">Texto</button>
-        <p></p>
-        <button onclick="showPosition()">TESTE</button>
-        <p></p> -->
+
         <button id="confirmar" href="#" onclick="window.open(exibirTexto())" target"_blank">CONFIRMAR</button>
+        <h1></h1>
         <p></p>
         <span id="popupPedido"></span>
         <p></p>

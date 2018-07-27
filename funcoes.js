@@ -1,7 +1,10 @@
 
 var pedidos = [];
 var qtd_pizzas;
-var pedido = {};
+var pedido = {pizzas: []};
+var pizzas_qtd_sabor = [];
+var pizza = [];
+var sabores = [];
 
 var map;
 var infowindow;
@@ -63,7 +66,6 @@ $(document).ready(function(){
     campo_pag.hide();
 
     function exibirPorc(n){
-        var pizzas = [];
         //console.log(PorcMod);
         listaPorcMod.hide();
         listaPorcMod.empty();
@@ -75,9 +77,9 @@ $(document).ready(function(){
             qtd_sabor.attr("name","mod_"+i);
 
             qtd_sabor.click(function(){
-                var sabores = [];
                 var valorclick2 = $(this).val();
                 valorclick2 = parseInt(valorclick2);
+                pizzas_qtd_sabor.push(valorclick2);
                 var conteudoPorcMod = $(this).closest(".conteudoPorcMod");
                 var listasabores = conteudoPorcMod.find(".listasabores");
                 listasabores.empty();
@@ -85,15 +87,10 @@ $(document).ready(function(){
                 for (var j=0;j<valorclick2;j++){
                     var clone2 = select_sab.clone();
                     clone2.show();
-                    // while (clone2.val() == 'Selecione') {
-                    // }
                     sabores.push(clone2.val());
-                    console.log(sabores);
+
                     listasabores.append(clone2);
                 }
-                console.log(listasabores);
-                pizzas.push(sabores);
-                console.log(pizzas);
             })
         }
         console.log(listaPorcMod);
@@ -122,14 +119,49 @@ $(document).ready(function(){
         }
         qtd_pizzas = parseInt(aux);
         pedido.n_pizzas = qtd_pizzas;
-        console.log(pedido);
         exibirPorc(qtd_pizzas);
     })
 
     bt_step_2_3.click(function(){
-        cad_cli.show();
-        bt_step_3_4.show();
-
+        var valid = true;
+        listaPorcMod.find(".listasabores .sabores").each(function(){
+            var select = $(this);
+            if (select.find("option:selected").val() == ""){
+                valid = false;
+            }
+        })
+        if (valid == true){
+            var i = 0;
+            var j = 0;
+            sabores = [];
+            listaPorcMod.find(".listasabores .sabores").each(function(){
+                if (j == pizzas_qtd_sabor[i]){
+                    j = 0;
+                    i++;
+                    pizza.push(sabores);
+                    sabores = [];
+                }
+                var select = $(this);
+                sabores.push(select.find("option:selected").val());
+                j++;
+            })
+            pizza.push(sabores);
+            // console.log(pizza);
+            cad_cli.show();
+            bt_step_3_4.show();
+        }
+        for (var i = 0; i < pizzas_qtd_sabor.length; i++) {
+            pizzas_qtd_sabor[i]
+            var str_piz = "Pizza " + (i+1) + ": ";
+            for (var j = 0; j < pizzas_qtd_sabor[i]; j++) {
+                str_piz += pizza[i][j];
+                if (j+1 < pizzas_qtd_sabor[i]){
+                    str_piz += ", ";
+                }
+            }
+            str_piz += ".";
+            pedido.pizzas.push(str_piz);
+        }
     })
 
     bt_step_3_4.click(function(){
@@ -156,17 +188,19 @@ $(document).ready(function(){
 
     confirmar.click(function(){
         var printapedido = $("#popupPedido");
-        printapedido.html("<p> <b> Pedido feito com sucesso!<br/>Numero de Pizzas: " + pedido.n_pizzas + "<br/>Nome do cliente: " + pedido.nome_cli + "<br/>Telefone contato: " + pedido.tel_cli + "<br/>Forma de pagamento: " + pedido.forma_pgto + "<br/>Nome da pizzaria: " + pedido.nomePizzaria + "<br/>Telefone pizzaria: " + pedido.tel_piz + " </b> </p>");
-    })
+        var pizzas_html = "";
 
+        for (var i = 0; i < pedido.n_pizzas; i++) {
+            pizzas_html += pedido.pizzas[i] + "<br/>";
+        }
+
+        printapedido.html("<h3><p> <b> Pedido feito com sucesso!<br/>Numero de Pizzas: " +
+        pedido.n_pizzas + "<br/>" + pizzas_html + "Nome do cliente: " + pedido.nome_cli + "<br/>Telefone contato: " +
+        pedido.tel_cli + "<br/>Forma de pagamento: " + pedido.forma_pgto + "<br/>Nome da pizzaria: " +
+        pedido.nomePizzaria + "<br/>Telefone pizzaria: " + pedido.tel_piz + " </b> </p></h3>");
 })
 
-function SetModelo(){
-    obj.modelo = []
-
-    // inf = [50%, 25%, (50%|25%), 33%]
-    obj.modelo.push(inf);
-}
+})
 
 function popUpAviso(){
     varPopUp = window.open ('popup.html', 'popup', "width=380 height=210, top=100, left=110, scrollbars=no ");
@@ -273,7 +307,11 @@ function geocodeLatLng(geocoder, map, infowindow, localAtual) {
 }
 
 function exibirTexto(){
-    var stringMsg = "https://wa.me/"+ pedido.tel_piz + "?text=*QUERO PIZZA!* Pedido para: " + pedido.nomePizzaria + "; Quantidade: " + pedido.n_pizzas + "; Nome cliente: " + pedido.nome_cli + "; Telefone contato: " + pedido.tel_cli + "; Forma de pagamento: " + pedido.forma_pgto + "; Endereço Cliente: " + pedido.end_cli;
+    var pizzas_url = "";
+    for (var i = 0; i < pedido.n_pizzas; i++) {
+        pizzas_url += pedido.pizzas[i] + " ";
+    }
+    var stringMsg = "https://wa.me/"+ pedido.tel_piz + "?text=*QUERO PIZZA!* Pedido para: " + pedido.nomePizzaria + "; Quantidade: " + pedido.n_pizzas + "; " + pizzas_url + " Nome cliente: " + pedido.nome_cli + "; Telefone contato: " + pedido.tel_cli + "; Forma de pagamento: " + pedido.forma_pgto + "; Endereço Cliente: " + pedido.end_cli;
     console.log(stringMsg);
 
     pedidos.push(pedido);
