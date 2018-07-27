@@ -77,7 +77,6 @@ function createMarker(place) {
                 pizzaria.telefone = "554797455379";
             }
         }
-        console.log("TESTE: " + pizzaria.telefone);
         infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
         'Número Telefone: ' + place.formatted_phone_number + '<br>' +
         place.formatted_address + '</div>');
